@@ -1,0 +1,161 @@
+/* Global Styles */
+:root {
+  --primary: #004d40; /* Deep Teal */
+  --secondary: #d84315; /* Warm Rust */
+  --accent: #ffca28; /* Golden Yellow */
+  --background: #f9f9f9; /* Light Gray */
+  --text: #2c3e50; /* Dark Slate */
+  --card-bg: #ffffff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border: 1px solid #e0e0e0;
+  --transition: all 0.3s ease-in-out;
+  --radius: 12px;
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+/* Home Container */
+.home-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-align: center;
+  padding: 5rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  font-weight: 400;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Call to Action Buttons */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.action-btn {
+  background: var(--accent);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.action-btn:hover {
+  background: #e6b800;
+  transform: scale(1.05);
+  box-shadow: var(--shadow);
+}
+
+/* Quick Actions */
+.quick-actions {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: -2rem;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.quick-btn {
+  background: var(--secondary);
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.quick-btn:hover {
+  background: #bf360c;
+  transform: scale(1.05);
+}
+
+/* Recipe Showcase */
+.recipe-showcase {
+  margin-top: 3rem;
+}
+
+.recipe-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.recipe-item {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.recipe-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero, .quick-actions, .recipe-showcase {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .recipe-display {
+    grid-template-columns: 1fr;
+  }
+}

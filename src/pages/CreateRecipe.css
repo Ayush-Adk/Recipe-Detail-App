@@ -1,0 +1,332 @@
+/* Custom Properties for a Formal, Classic Theme */
+:root {
+  --primary: #355e3b; /* Forest Green */
+  --secondary: #8b0000; /* Deep Burgundy */
+  --accent: #d4a017; /* Antique Gold */
+  --bg-light: #f5f5f5; /* Soft Ivory */
+  --bg-dark: #1f2a44; /* Slate Blue */
+  --text-dark: #1f2a44; /* Slate Blue */
+  --border-gradient: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+  --shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --transition: all 0.4s ease-in-out;
+  --font-primary: "Playfair Display", serif;
+  --font-secondary: "Lora", serif;
+}
+
+/* Advanced Animations */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(15px);
+  }
+  70% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes spinPulse {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 5px var(--primary);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0 0 10px var(--accent);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    border-image-source: linear-gradient(45deg, var(--primary), var(--secondary));
+  }
+  50% {
+    border-image-source: linear-gradient(45deg, var(--secondary), var(--accent));
+  }
+  100% {
+    border-image-source: linear-gradient(45deg, var(--accent), var(--primary));
+  }
+}
+
+/* Base Styles */
+.create-recipe {
+  background: var(--bg-light);
+  font-family: var(--font-secondary);
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.create-recipe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+/* Form Container */
+.form-container {
+  background: #ffffff;
+  border: 3px solid var(--accent);
+  border-radius: 1rem;
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  margin: 0 auto;
+  animation: zoomIn 0.6s ease-out;
+}
+
+/* Title */
+.form-title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.form-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--primary);
+  transition: width 0.4s ease;
+}
+
+.form-title:hover::after {
+  width: 200px;
+}
+
+/* Form Elements */
+.form-group {
+  background: var(--bg-light);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.form-label::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.3s ease;
+}
+
+.form-label:hover::after {
+  width: 50%;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  background: #ffffff;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-secondary);
+  color: var(--text-dark);
+  width: 100%;
+  transition: var(--transition);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.2);
+  outline: none;
+}
+
+/* Input Groups */
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.btn-add,
+.btn-delete {
+  background: var(--accent);
+  color: var(--text-dark);
+  border-radius: 50%;
+  padding: 0.6rem;
+  border: none;
+  transition: var(--transition);
+}
+
+.btn-add:hover {
+  background: var(--secondary);
+  transform: scale(1.1);
+  box-shadow: 0 0 8px var(--primary);
+}
+
+.btn-delete {
+  background: var(--primary);
+}
+
+.btn-delete:hover {
+  background: #6b0000; /* Darker burgundy */
+  transform: scale(1.1);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.btn-delete:disabled {
+  background: #d3d3d3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Grid */
+.form-grid {
+  background: var(--bg-light);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--secondary);
+}
+
+/* Submit Button */
+.btn-submit {
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--accent);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  display: block;
+  margin: 2rem auto 0;
+}
+
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-submit:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-submit:hover {
+  background: var(--secondary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+/* Back Button */
+.back-btn {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.back-btn:hover {
+  background: var(--accent);
+  color: var(--text-dark);
+  transform: translateX(-5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 2rem;
+  }
+
+  .form-title {
+    font-size: 2rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-group {
+    padding: 1rem;
+  }
+
+  .btn-submit {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .form-title {
+    font-size: 1.75rem;
+  }
+}
